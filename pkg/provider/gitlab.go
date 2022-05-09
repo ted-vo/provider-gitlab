@@ -3,12 +3,13 @@ package provider
 import (
 	"errors"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"regexp"
 
 	"github.com/Masterminds/semver/v3"
-	"github.com/go-semantic-release/semantic-release/v2/pkg/provider"
-	"github.com/go-semantic-release/semantic-release/v2/pkg/semrel"
+	"github.com/ted-vo/semantic-release/v3/pkg/provider"
+	"github.com/ted-vo/semantic-release/v3/pkg/semrel"
 	"github.com/xanzy/go-gitlab"
 )
 
@@ -67,6 +68,14 @@ func (repo *GitLabRepository) Init(config map[string]string) error {
 
 	repo.client = client
 	return nil
+}
+
+func (repo *GitLabRepository) Name() string {
+	return "GitLab"
+}
+
+func (repo *GitLabRepository) Version() string {
+	return PVERSION
 }
 
 func (repo *GitLabRepository) GetInfo() (*provider.RepositoryInfo, error) {
@@ -179,10 +188,31 @@ func (repo *GitLabRepository) CreateRelease(release *provider.CreateReleaseConfi
 	return err
 }
 
-func (repo *GitLabRepository) Name() string {
-	return "GitLab"
-}
+func (repo *GitLabRepository) CommitFilesChanged(filePaths []string, message string) (string, error) {
+	actions := make([]*gitlab.CommitAction, 0)
+	for _, filePath := range filePaths {
+		content, err := ioutil.ReadFile(filePath)
+		if err != nil {
+			return "", fmt.Errorf("error ocuring when read file update. Detail: %s", err)
+		}
+		actions = append(actions, &gitlab.CommitAction{
+			Action:   "update",
+			FilePath: filePath,
+			Content:  string(content),
+		})
+	}
+	commit, _, err := repo.client.Commits.CreateCommit(
+		repo.projectID,
+		&gitlab.CreateCommitOptions{
+			Branch:        &repo.branch,
+			CommitMessage: &message,
+			Actions:       actions,
+		},
+	)
 
-func (repo *GitLabRepository) Version() string {
-	return PVERSION
+	if err != nil {
+		return "", err
+	}
+
+	return commit.ShortID, nil
 }

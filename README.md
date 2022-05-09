@@ -1,9 +1,9 @@
 # :fox_face: provider-gitlab
-[![CI](https://github.com/go-semantic-release/provider-gitlab/workflows/CI/badge.svg?branch=master)](https://github.com/go-semantic-release/provider-gitlab/actions?query=workflow%3ACI+branch%3Amaster)
-[![Go Report Card](https://goreportcard.com/badge/github.com/go-semantic-release/provider-gitlab)](https://goreportcard.com/report/github.com/go-semantic-release/provider-gitlab)
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/go-semantic-release/provider-gitlab)](https://pkg.go.dev/github.com/go-semantic-release/provider-gitlab)
+[![CI](https://github.com/ted-vo/provider-gitlab/workflows/CI/badge.svg?branch=master)](https://github.com/ted-vo/provider-gitlab/actions?query=workflow%3ACI+branch%3Amaster)
+[![Go Report Card](https://goreportcard.com/badge/github.com/ted-vo/provider-gitlab)](https://goreportcard.com/report/github.com/ted-vo/provider-gitlab)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/ted-vo/provider-gitlab)](https://pkg.go.dev/github.com/ted-vo/provider-gitlab)
 
-The GitLab provider for [go-semantic-release](https://github.com/go-semantic-release/semantic-release).
+The GitLab provider for [semantic-release](https://github.com/ted-vo/semantic-release).
 
 ## Licence
 
