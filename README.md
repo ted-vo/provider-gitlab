@@ -1,5 +1,5 @@
 # :fox_face: provider-gitlab
-[![CI](https://github.com/ted-vo/provider-gitlab/workflows/CI/badge.svg?branch=master)](https://github.com/ted-vo/provider-gitlab/actions?query=workflow%3ACI+branch%3Amaster)
+[![CI](https://github.com/ted-vo/provider-gitlab/workflows/CI/badge.svg?branch=main)](https://github.com/ted-vo/provider-gitlab/actions?query=workflow%3ACI+branch%3Amain)
 [![Go Report Card](https://goreportcard.com/badge/github.com/ted-vo/provider-gitlab)](https://goreportcard.com/report/github.com/ted-vo/provider-gitlab)
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/ted-vo/provider-gitlab)](https://pkg.go.dev/github.com/ted-vo/provider-gitlab)
 
