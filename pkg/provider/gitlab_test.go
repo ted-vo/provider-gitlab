@@ -63,6 +63,8 @@ var (
 		createGitlabTag("test-tag", "deadbeef"),
 		createGitlabTag("v1.0.0", "deadbeef"),
 		createGitlabTag("v2.0.0", "deadbeef"),
+		createGitlabTag("v1.0.0-USER.1", "deadbeef"),
+		createGitlabTag("v2.0.0-USERWALLET.1", "deadbeef"),
 		createGitlabTag("v2.1.0-beta", "deadbeef"),
 		createGitlabTag("v3.0.0-beta.2", "deadbeef"),
 		createGitlabTag("v3.0.0-beta.1", "deadbeef"),
@@ -161,6 +163,8 @@ func TestGitlabGetReleases(t *testing.T) {
 	}{
 		{"", "", "deadbeef", "2020.4.19"},
 		{"", "^v[0-9]*", "deadbeef", "2.0.0"},
+		{"1-USER", "^v[0-9]\\.[0-9]\\.[0-9]-USER\\.", "deadbeef", "1.0.0-USER.1"},
+		{"2-USERWALLET", "^v[0-9]\\.[0-9]\\.[0-9]-USERWALLET\\.", "deadbeef", "2.0.0-USERWALLET.1"},
 		{"2-beta", "", "deadbeef", "2.1.0-beta"},
 		{"3-beta", "", "deadbeef", "3.0.0-beta.2"},
 		{"4-beta", "", "deadbeef", "4.0.0-beta"},
